@@ -39,9 +39,11 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 // **********************************************
+    
 
 next.addEventListener('click', function(){
-
+    
+const clock = setInterval(function(){
     if (itemActive < imagesArray.length -1) {
 
     //verifico l'elemento attivo (itemActive)
@@ -75,8 +77,13 @@ next.addEventListener('click', function(){
     circles[itemActive].classList.add('active');
 
     }
+
+}, 2000);
  
 });
+
+
+console.log(setInterval)
 
 // ***************************************************
 
