@@ -132,8 +132,13 @@ prev.addEventListener('click', function(){
 
 // creo un set interval e al suo interno ci metto IF next per scorrere le img automaticamente
 
-setInterval(function(){
+let myInterval = setInterval(goToNextSlide,2000);
 
-    goToNextSlide();
+document.getElementById(`play`).addEventListener(`click`, function(){
+    myInterval = setInterval(goToNextSlide,2000);
+})
 
-},1000);
+document.getElementById(`stop`).addEventListener(`click`, function(){
+    clearInterval(myInterval);
+})
+
