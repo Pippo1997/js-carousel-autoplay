@@ -8,17 +8,24 @@ const imagesArray = [
 ]
 
 //Creiamo dinamicamente i div con le immagini del carosello
-let itemsContent = '';
+let itemsContent = ``;
+let itemsThumbsnails = ``;
 
 for(let i = 0; i < imagesArray.length; i++){
     itemsContent += `<div class="item">
         <img src="./img/${imagesArray[i]}">
-    </div>`
+    </div>`;
+
+    itemsThumbsnails += `<div class="thumb"><img src="./img/${imagesArray[i]}">
+    </div>`;
 }
 
 //inseriamo le immagini nel div che le deve contenere
 const itemsSlider = document.querySelector('.item-slider');
 itemsSlider.innerHTML += itemsContent;
+
+const thumbnailsPreview = document.querySelector(`.thumbnails`);
+thumbnailsPreview.innerHTML = itemsThumbsnails;
 
 //Prendiamo la prima immagine dell'array e la rendiamo attiva
 
@@ -35,20 +42,22 @@ const circles = document.getElementsByClassName('circle');
 
 circles[itemActive].classList.add('active');
 
+const thumbnails = document.getElementsByClassName(`thumb`)
+thumbnails[itemActive].classList.add(`active`);
+
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 // **********************************************
-    
 
 next.addEventListener('click', function(){
-    
-const clock = setInterval(function(){
+
     if (itemActive < imagesArray.length -1) {
 
     //verifico l'elemento attivo (itemActive)
     items[itemActive].classList.remove('active');
     circles[itemActive].classList.remove('active');
+    thumbnails[itemActive].classList.remove(`active`);
 
     //incremento il suo valore di 1
     itemActive++;
@@ -58,6 +67,7 @@ const clock = setInterval(function(){
 
     items[itemActive].classList.add('active');
     circles[itemActive].classList.add('active');
+    thumbnails[itemActive].classList.add(`active`);
 
     }
 
@@ -66,6 +76,7 @@ const clock = setInterval(function(){
     //verifico l'elemento attivo (itemActive)
     items[itemActive].classList.remove('active');
     circles[itemActive].classList.remove('active');
+    thumbnails[itemActive].classList.remove(`active`);
 
     //incremento il suo valore di 1
     itemActive = 0;
@@ -75,15 +86,11 @@ const clock = setInterval(function(){
 
     items[itemActive].classList.add('active');
     circles[itemActive].classList.add('active');
+    thumbnails[itemActive].classList.add(`active`);
 
     }
-
-}, 2000);
  
 });
-
-
-console.log(setInterval)
 
 // ***************************************************
 
@@ -94,6 +101,7 @@ prev.addEventListener('click', function(){
         //verifico l'elemento attivo (itemActive)
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
+        thumbnails[itemActive].classList.remove(`active`);
 
         //decremento il suo valore di 1
         itemActive--;
@@ -102,6 +110,7 @@ prev.addEventListener('click', function(){
         //stessa cosa per i cerchi
         items[itemActive].classList.add('active');
         circles[itemActive].classList.add('active');
+        thumbnails[itemActive].classList.add(`active`);
 
     }
 
@@ -110,6 +119,7 @@ prev.addEventListener('click', function(){
         //verifico l'elemento attivo (itemActive)
         items[itemActive].classList.remove('active');
         circles[itemActive].classList.remove('active');
+        thumbnails[itemActive].classList.remove(`active`);
 
         //decremento il suo valore di 1
         itemActive = imagesArray.length -1;
@@ -118,9 +128,40 @@ prev.addEventListener('click', function(){
         //stessa cosa per i cerchi
         items[itemActive].classList.add('active');
         circles[itemActive].classList.add('active');
+        thumbnails[itemActive].classList.add(`active`);
 
     }
 
 })
 
+// creo un set interval e al suo interno ci metto IF next per scorrere le img automaticamente
 
+setInterval(function(){
+    if (itemActive < imagesArray.length -1) {
+
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        thumbnails[itemActive].classList.remove(`active`);
+    
+        itemActive++;
+
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        thumbnails[itemActive].classList.add(`active`);
+    
+        }
+    
+        else {
+    
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        thumbnails[itemActive].classList.remove(`active`);
+
+        itemActive = 0;
+
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        thumbnails[itemActive].classList.add(`active`);
+    
+        }
+},1000);
