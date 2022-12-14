@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    transform: translate(100%, -108%);
+    transform: translate(100%, -124%);
     background-color: black;
 }
 
@@ -103,3 +103,31 @@
     background-color: rgba(174, 174, 174, 1); 
 }
 
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.circle-button{
+    border-radius: 50%;
+    padding: 20px 10px;
+    margin: 0px 10px;
+    cursor: pointer;
+    transition: 0.3;
+}
+
+.circle-button#play{
+    background-color: green;
+}
+
+.circle-button#stop{
+    background-color: orange;
+}
+
+.circle-button#play:hover{
+    background-color: rgb(8, 65, 8);
+}
+
+.circle-button#stop:hover{
+    background-color: rgb(149, 86, 8);
+}

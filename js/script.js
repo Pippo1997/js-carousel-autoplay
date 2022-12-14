@@ -1,3 +1,35 @@
+function goToNextSlide(){
+
+    if (itemActive < imagesArray.length -1) {
+
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        thumbnails[itemActive].classList.remove(`active`);
+    
+        itemActive++;
+
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        thumbnails[itemActive].classList.add(`active`);
+    
+        }
+    
+        else {
+    
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        thumbnails[itemActive].classList.remove(`active`);
+
+        itemActive = 0;
+
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        thumbnails[itemActive].classList.add(`active`);
+    
+        }
+
+}
+
 //Creo array immagini
 const imagesArray = [
     "01.webp",
@@ -52,43 +84,7 @@ const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
 
-    if (itemActive < imagesArray.length -1) {
-
-    //verifico l'elemento attivo (itemActive)
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    thumbnails[itemActive].classList.remove(`active`);
-
-    //incremento il suo valore di 1
-    itemActive++;
-
-    //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
-    //stessa cosa per i cerchi
-
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
-    thumbnails[itemActive].classList.add(`active`);
-
-    }
-
-    else {
-
-    //verifico l'elemento attivo (itemActive)
-    items[itemActive].classList.remove('active');
-    circles[itemActive].classList.remove('active');
-    thumbnails[itemActive].classList.remove(`active`);
-
-    //incremento il suo valore di 1
-    itemActive = 0;
-
-    //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
-    //stessa cosa per i cerchi
-
-    items[itemActive].classList.add('active');
-    circles[itemActive].classList.add('active');
-    thumbnails[itemActive].classList.add(`active`);
-
-    }
+    goToNextSlide();
  
 });
 
@@ -137,31 +133,7 @@ prev.addEventListener('click', function(){
 // creo un set interval e al suo interno ci metto IF next per scorrere le img automaticamente
 
 setInterval(function(){
-    if (itemActive < imagesArray.length -1) {
 
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        thumbnails[itemActive].classList.remove(`active`);
-    
-        itemActive++;
+    goToNextSlide();
 
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        thumbnails[itemActive].classList.add(`active`);
-    
-        }
-    
-        else {
-    
-        items[itemActive].classList.remove('active');
-        circles[itemActive].classList.remove('active');
-        thumbnails[itemActive].classList.remove(`active`);
-
-        itemActive = 0;
-
-        items[itemActive].classList.add('active');
-        circles[itemActive].classList.add('active');
-        thumbnails[itemActive].classList.add(`active`);
-    
-        }
 },1000);
